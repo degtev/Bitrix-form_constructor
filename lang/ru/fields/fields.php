@@ -1,0 +1,32 @@
+<?
+$MESS ["FIELDS_TITLE"] = "Поля формы";
+$MESS ["FIELDS_DESCR"] = "Настройка дополнительных полей формы. Обязательно заполняйте ВСЕ поля таблицы.<br>В почтовом шаблоне доступны все поля по кодам.";
+$MESS ["FIELDS_SUBMIT"] = "Сохранить";
+$MESS ["FIELDS_TYPE_STRING"] = "Строка";
+$MESS ["FIELDS_TYPE_NUM"] = "Число";
+$MESS ["FIELDS_TYPE_DATE"] = "Дата";
+$MESS ["FIELDS_TYPE_EMAIL"] = "E-mail";
+$MESS ["FIELDS_TYPE_PHONE"] = "Телефон";
+$MESS ["FIELDS_TYPE_FILE"] = "Файл";
+$MESS ["FIELDS_TYPE_HIDDEN"] = "Скрытое поле";
+$MESS ["FIELDS_HIDDEN_TEXT"] = "Значение скрытого поля";
+$MESS ["FIELDS_TYPE_SELECT"] = "Выпадающий список";
+$MESS ["FIELDS_TYPE_CHECKBOX"] = "Чекбокс";
+$MESS ["FIELDS_TYPE_RADIO"] = "Радиобаттон";
+$MESS ["FIELDS_TYPE_TEXTAREA"] = "Текстовое поле";
+$MESS ["FIELDS_TYPE_IBLOCK_SECTION"] = "Инфоблок";
+$MESS ["FIELDS_ITEM_DELETE"] = "Удалить";
+$MESS ["FIELDS_ITEM_ADD"] = "Добавить";
+$MESS ["FIELDS_NAME"] = "Название";
+$MESS ["FIELDS_CODE"] = "Код";
+$MESS ["FIELDS_ID"] = "ID";
+$MESS ["FIELDS_TYPE"] = "Тип";
+$MESS ["FIELDS_SORT"] = "Сортировка";
+$MESS ["FIELDS_PLACEHOLDER_TEXT"] = "Плейсхолдер";
+$MESS ["FIELDS_REQ_TITLE"] = "Обязательное";
+$MESS ["FIELDS_ERROR_TEXT"] = "Ошибка";
+$MESS ["FIELDS_CLASSNAME"] = "Класс";
+$MESS ["FIELDS_PHONE_MASK_TEXT"] = "+{7} (000) 000-00-00";
+$MESS ["FIELDS_LIST_OPTIONS_TEXT"] = "Значения через точку с запятой (;)";
+$MESS ["FIELDS_FILE_FORMAT_TEXT"] = "Допустимый формат файлов через (;)"
+?>

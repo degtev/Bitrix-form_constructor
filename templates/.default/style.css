@@ -1,0 +1,6 @@
+.success-message{
+    display:none;
+}
+.success-message.active{
+    display:block;
+}
