@@ -1,40 +1,29 @@
-function FieldEdit(arParams)
-{
-    if (null != window.jsSettingsListEditor) {
-        try {
-            window.jsSettingsListEditor.Close();
-        } catch (e) {}
-
-        window.jsSettingsListEditor = null;
-    }
-
+function FieldEdit(arParams) {
+    closeSettingsListEditor();
     window.jsSettingsListEditor = new JSettingsListEditor(arParams);
 }
 
 function JSettingsListEditor(arParams) {
-    this.arParams = arParams;
-    this.jsOptions = this.arParams.data.split('||');
+    const { data, oCont, oInput, getElements } = arParams;
 
-    var obButton = this.arParams.oCont.appendChild(BX.create('BUTTON', {
-        html: this.jsOptions[0]
+    const obButton = oCont.appendChild(BX.create('BUTTON', {
+        html: data.split('||')[0]
     }));
 
-    obButton.onclick = BX.delegate(this.btnClick, this);
+    obButton.onclick = () => this.btnClick(arParams);
 
-    this.saveData = BX.delegate(this.__saveData, this);
+    this.saveData = () => this.__saveData(oInput);
 }
 
-JSettingsListEditor.prototype.btnClick = function () {
-    this.arElements = this.arParams.getElements();
+JSettingsListEditor.prototype.btnClick = function (arParams) {
+    const arElements = arParams.getElements();
 
-    if (!this.arElements)
-        return false;
+    if (!arElements) return false;
 
-    if (null == window.jsPopup_list_editor) {
-        var strUrl = this.jsOptions[1]
-            + '?lang=' + this.jsOptions[0];
-
-        var strUrlPost = 'LIST_DATA=' + BX.util.urlencode(this.arParams.oInput.value);
+    if (!window.jsPopup_list_editor) {
+        const [buttonName, baseUrl] = arParams.data.split('||');
+        const strUrl = `${baseUrl}?lang=${buttonName}`;
+        const strUrlPost = 'LIST_DATA=' + BX.util.urlencode(arParams.oInput.value);
 
         window.jsPopup_list_editor = new BX.CDialog({
             'content_url': strUrl,
@@ -49,21 +38,20 @@ JSettingsListEditor.prototype.btnClick = function () {
     window.jsPopup_list_editor.PARAMS.content_url = '';
 
     return false;
-}
+};
 
-JSettingsListEditor.prototype.Close = function(e) {
-    if (false !== e)
-        BX.util.PreventDefault(e);
 
-    if (null != window.jsPopup_list_editor) {
+JSettingsListEditor.prototype.closeSettingsListEditor = function () {
+    if (window.jsPopup_list_editor) {
         window.jsPopup_list_editor.Close();
     }
-}
+};
 
-JSettingsListEditor.prototype.__saveData = function(strData) {
-    this.arParams.oInput.value = strData;
-    if (null != this.arParams.oInput.onchange)
-        this.arParams.oInput.onchange();
 
-    this.Close(false);
-}
+JSettingsListEditor.prototype.__saveData = function (oInput) {
+    oInput.value = strData;
+    if (oInput.onchange) {
+        oInput.onchange();
+    }
+    this.closeSettingsListEditor();
+};
